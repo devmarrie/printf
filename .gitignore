@@ -1,0 +1,17 @@
+#/bin/bash
+
+# Ignore the main.c file
+*main.c
+
+#Ignore the exe
+*.exe
+*.out
+
+#Ecmas buffer files
+*~
+*#
+
+#Saved files
+*.swo
+*.swp
+
