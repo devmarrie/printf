@@ -1,35 +1,28 @@
 #include "main.h"
 
-
 /**
-*The print_str writes the string
-*@buff_dest: character string
-*@arg: list of arguments
-*@buff_count: index f buffer pointer
-*Return: The number of characters printed.
-*/
+ * print_str - prints a variadic string each per time to stdout
+ * @args: variadic parameter
+ *
+ * Return: number of characters printed on Success
+ * upon failure -1
+ */
 
-int print_str(char *buff_dest, va_list arg, int buff_count)
+int print_str(va_list args)
 {
-       char *str;
-       int i = 0;
+	int i;
+	int count = 0;
+	char *str;
 
-       str = va_arg(arg, char *);
+	str = va_arg(args, char *);
 	if (str == NULL)
-		str = "(null)";
+		return (-1);
 
-	if (str[0] == '\0')
+	while (str[i])
 	{
-		buff_dest[buff_count] = '\0';
-		buff_count++;
+		count = write(1, &str[i], 1);
+		i = i + 1;
 	}
 
-	while (str[i] != '\0')
-	{
-		buff_dest[buff_count] = str[i];
-		i++;
-		buff_count++;
-	}
-
-	return (buff_count);
-}
+	return (count);
+}	
