@@ -1,63 +1,52 @@
-#include <stdarg.h>
-#include <stddef.h>
+#include "main.h"
 
 /**
-*Prints a formarted string
-*@formart -prints a(char*)
-*@... - unknown variadic arguments
-*/
+ * _printf - the formatted output conversion and print data.
+ * @format: input string.
+ *
+ * Return: the number of chars printed.
+ */
 
 int _printf(const char *format, ...)
 {
-	int i = 0;
-	int count = 0;
-	int value = 0;
-	va_list args;
-	va_start(args, format);
-	int (*f)(va_list);
-	
-	/*Prevent parsing a null pointer*/
-	if (format == NULL)
-		return (-1);
-	
-	/*Print each character of string*/
-	while (format[i])
-	{	
-		if (format[i] != '%')
-		{
-			value = write(1,&format[i],1);
-			count = count + value;
-			i++;
-			continue;
-		}
+	int i = 0, j = 0, buff_count = 0, prev_buff_count = 0;
+	char buffer[2000];
+	va_list arg;
+	call_t container[] = {
+		{'c', print_char}, {'s', print_str}, {'i', print_int},
+		{'%', print_perc}, {'b', print_bin}, {'d', print_int},
+		{'u', print_uint}, {'o', print_oct}, {'x', print_hex},
+		{'X', print_X}, {'R', print_R13}, {'r', print_rev},
+		{'\0', NULL}
+	};
 
+	if (!format)
+		return (-1);
+	va_start(arg, format);
+	while (format && format[i] != '\0')
+	{
 		if (format[i] == '%')
 		{
-			f = check_specifier(&format[i + 1]);
-			if (f != NULL)
+			i++, prev_buff_count = buff_count;
+			for (j = 0; container[j].t != '\0'; j++)
 			{
-				value = f(args);
-				count = count + value;
-				i = i + 2;
-				continue;
+				if (format[i] == '\0')
+					break;
+				if (format[i] == container[j].t)
+				{
+					buff_count = container[j].f(buffer, arg, buff_count);
+					break;
+				}
 			}
-
-			if (format[i + 1] == '\0')
-			{
-				break;
-			}
-
-			if (format[i + 1] != '\0')
-			{
-				value = write(1, &format[i + 1], 1);
-				count = count + value;
-                        	i = i + 2;
-                        	continue;
-			}
-
-
+			if (buff_count == prev_buff_count && format[i])
+				i--, buffer[buff_count] = format[i], buff_count++;
 		}
+		else
+			buffer[buff_count] = format[i], buff_count++;
+		i++;
 	}
-
-	return (count);         
+	va_end(arg);
+	buffer[buff_count] = '\0';
+	print_buff(buffer, buff_count);
+	return (buff_count);
 }

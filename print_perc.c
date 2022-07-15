@@ -1,17 +1,21 @@
 #include "main.h"
 
 /**
- * print_perc- prints character % to stdout
- * @args: variadic parameter
- *
- * Return: number of characters printed
+ * print_perc - returns the character
+ * @buff_dest: character
+ * @arg: list of arguments
+ * @buff_count: index of buffer pointer
+ * Return: the buffer index
  */
 
-int print_perc(va_list args)
+int print_perc(char *buff_dest, va_list arg, int buff_count)
 {
-	(void)args;
+	char c = va_arg(arg, int);
 
-	write(1, "%", 1);
+	c = '%';
 
-	return (1);
-}	
+	buff_dest[buff_count] = c;
+
+	return (++buff_count);
+}
+
