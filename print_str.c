@@ -11,10 +11,10 @@
 
 int print_str(char *buff_dest, va_list arg, int buff_count)
 {
-       char *str;
-       int i = 0;
+	char *str;
+	int i = 0;
 
-       str = va_arg(arg, char *);
+	str = va_arg(arg, char *);
 	if (str == NULL)
 		str = "(null)";
 

@@ -9,12 +9,10 @@
 
 int print_char(char *buff_dest, va_list arg, int buff_count)
 {
-       char c = va_arg(arg, int);
-
+	char c = va_arg(arg, int);
 
 	buff_dest[buff_count] = c;
 
 	return (++buff_count);
-
 }
 
