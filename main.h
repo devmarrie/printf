@@ -19,6 +19,7 @@ typedef struct call
 	int (*f)(char *, va_list, int);
 } call_t;
 
+int (*check_specifier(const char*))(va_list);
 int _printf(const char *format, ...);
 int str_len(char *s);
 char *_strcpy(char *dest, char *src);
