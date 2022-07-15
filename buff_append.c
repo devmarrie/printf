@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * buff_append - Concatenates the buffer characters
+ * buff_append - Concatenates the buffer
  * @buff_dest: buffer destination
+ * @buff_count: to increment
  * @arg: pointer to va_arg return
- * @print_char: pointer to print_char function
+ * @type: char
  * Return: index of buffer pointer
  */
 
