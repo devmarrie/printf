@@ -2,11 +2,11 @@
 
 
 /**
-*The print_str writes the string
-*@buff_dest: character string
-*@arg: list of arguments
-*@buff_count: index f buffer pointer
-*Return: The number of characters printed.
+* print_str - writes the string
+* @buff_dest: character string
+* @arg: list of arguments
+* @buff_count: index f buffer pointer
+* Return: The number of characters printed.
 */
 
 int print_str(char *buff_dest, va_list arg, int buff_count)
