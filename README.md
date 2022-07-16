@@ -2,9 +2,9 @@
 
 This project is an illustration of the use of printf function in C ,done by Marriane Akeyo and Joseph Bamisaye who are Software Engineering students at Alx School, as a fullfilment of their understanding of the printf function in C and other topics learnt during the program.
 
-Some of the take aways from this project include: 
+Some of the take aways from this project include:
 
-* What the printf function is ,other programming languages using printf statement. 
+* What the printf function is ,other programming languages using printf statement.
 * How the function can be improved if possible.
 * Writting a pseudocode and an algorithim  for a problem.
 * Applying variadic functions to big projects
@@ -22,9 +22,9 @@ If there are format specifiers, those are replaced with their respective argumen
 **Parameters**
 
 * #### formart:his is the string that contains the text to be written to stdout. It can optionally contain embedded format tags that are replaced by the values specified in subsequent additional arguments and formatted as requested. Format tags prototype is:
- 
- **%[flags][width][.precision][length]specifier** 
- 
+
+**%[flags][width][.precision][length]specifier**
+
 If the program runs successfully, the return value is the amount of chars printed.
 
 | Specifier | Output              |
